@@ -1,7 +1,7 @@
 🚀 Live Demo
 
 🌐 Live App:
-👉 (Add your Render URL here once deployment finishes)
+👉 https://ai-based-mental-health-sentiment-stress.onrender.com
 
 https://<your-app-name>.onrender.com
 
