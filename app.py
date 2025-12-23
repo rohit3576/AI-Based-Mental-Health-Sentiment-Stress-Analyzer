@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 import tensorflow as tf
 import numpy as np
@@ -14,7 +15,9 @@ app = Flask(__name__)
 # LOAD MODELS
 # -----------------------------
 sentiment_model = tf.keras.models.load_model("model/sentiment_model.h5")
-stress_model = tf.keras.models.load_model("model/stress_model.h5")  # kept for architecture completeness
+stress_model = tf.keras.models.load_model(
+    "model/stress_model.h5"
+)  # kept for architecture completeness
 
 # Load preprocessing config
 with open("model/preprocess_config.pkl", "rb") as f:
@@ -23,6 +26,7 @@ with open("model/preprocess_config.pkl", "rb") as f:
 VOCAB_SIZE = config["vocab_size"]
 MAX_LEN = config["max_len"]
 
+# IMDB word index
 word_index = imdb.get_word_index()
 
 # -----------------------------
@@ -33,13 +37,13 @@ def encode_text(text):
     encoded = []
 
     for word in words:
-        idx = word_index.get(word, 2)  # <UNK>
+        idx = word_index.get(word, 2)  # 2 = <UNK>
         if idx < VOCAB_SIZE:
             encoded.append(idx)
         else:
             encoded.append(2)
 
-    # handle very short / empty input
+    # Handle empty or very short input
     if len(encoded) == 0:
         encoded = [2]
 
@@ -76,13 +80,13 @@ def index():
         encoded_text = encode_text(user_text)
         sentiment_score = float(sentiment_model.predict(encoded_text)[0][0])
 
-        # confidence %
+        # Confidence percentage
         confidence = round(sentiment_score * 100, 2)
 
-        # sentiment label
+        # Sentiment label
         sentiment = "Positive 😊" if sentiment_score >= 0.5 else "Negative 😔"
 
-        # stress + advice
+        # Stress level + advice
         stress, advice = get_stress_label(sentiment_score)
 
     return render_template(
@@ -94,7 +98,8 @@ def index():
     )
 
 # -----------------------------
-# RUN (PRODUCTION SAFE)
+# RUN (RENDER + LOCAL SAFE)
 # -----------------------------
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
