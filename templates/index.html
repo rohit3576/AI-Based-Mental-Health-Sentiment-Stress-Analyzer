@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mental Health Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="glass-container">
+    <h1>🧠 AI Mental Health Analyzer</h1>
+    <p class="subtitle">
+        Understand your emotions and stress using AI
+    </p>
+
+    <!-- FORM -->
+    <form method="POST" onsubmit="showLoader()">
+        <textarea 
+            name="text"
+            placeholder="Write what’s on your mind..."
+            required></textarea>
+
+        <button type="submit">Analyze Now</button>
+    </form>
+
+    <!-- LOADING ANIMATION -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Analyzing your emotions...</p>
+    </div>
+
+    <!-- RESULT -->
+    {% if sentiment %}
+    <div class="result">
+
+        <p class="sentiment">Sentiment: {{ sentiment }}</p>
+
+        {% if "Low" in stress %}
+            <p>Stress Level: <span class="stress-low">{{ stress }}</span></p>
+        {% elif "Medium" in stress %}
+            <p>Stress Level: <span class="stress-medium">{{ stress }}</span></p>
+        {% else %}
+            <p>Stress Level: <span class="stress-high">{{ stress }}</span></p>
+        {% endif %}
+
+        <p>Suggestion: {{ advice }}</p>
+
+        <!-- CONFIDENCE -->
+        {% if confidence is not none %}
+        <div class="confidence-box">
+            <p>Confidence: {{ confidence }}%</p>
+            <div class="confidence-bar">
+                <div class="confidence-fill" style="width: {{ confidence }}%;"></div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+    <div class="footer">
+        ⚠️ Educational use only — Not a medical diagnosis
+    </div>
+</div>
+
+<!-- JS FOR LOADER -->
+<script>
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+}
+</script>
+
+</body>
+</html>
