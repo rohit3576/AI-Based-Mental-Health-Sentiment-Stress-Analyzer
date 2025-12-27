@@ -1,41 +1,41 @@
-🚀 Live Demo
+🧠 AI-Based Mental Health Sentiment & Stress Analyzer
 
+🚀 Live Demo
 🌐 Live App:
 👉 https://ai-based-mental-health-sentiment-stress.onrender.com
 
-https://<your-app-name>.onrender.com
-
 📌 Project Overview
 
-Mental health awareness is critical in today’s fast-paced world. This project uses Natural Language Processing (NLP) and Deep Learning to analyze a user’s thoughts and emotions expressed through text.
+Mental health awareness is critical in today’s fast-paced world.
+This project uses Natural Language Processing (NLP) and Deep Learning to analyze a user’s thoughts and emotions expressed through text.
 
 The system:
 
-Detects sentiment (Positive / Negative)
+✅ Detects sentiment (Positive / Negative)
 
-Estimates stress level (Low / Medium / High)
+✅ Estimates stress level (Low / Medium / High)
 
-Displays confidence score
+✅ Displays confidence score
 
-Provides wellness suggestions
+✅ Provides wellness suggestions
 
-Features a modern glassmorphism UI
+✅ Features a modern glassmorphism UI
 
-⚠️ This tool is for educational purposes only and is not a medical diagnosis.
+⚠️ Disclaimer: This tool is for educational purposes only and is not a medical diagnosis.
 
 ✨ Key Features
 
-🧠 AI-powered sentiment analysis using Bidirectional LSTM
+🧠 AI-powered Sentiment Analysis using Bidirectional LSTM
 
-📊 Stress level classification (Low / Medium / High)
+📊 Stress Level Classification (Low / Medium / High)
 
 🎯 Confidence percentage visualization
 
-🎨 Modern glassmorphism UI (responsive for mobile & desktop)
+🎨 Modern Glassmorphism UI (Mobile & Desktop responsive)
 
 ⏳ Loading animation for better UX
 
-☁️ Free cloud deployment (Render)
+☁️ Free cloud deployment using Render
 
 🛠️ Tech Stack
 🔹 Backend
@@ -50,9 +50,9 @@ TensorFlow / Keras
 
 Bidirectional LSTM (BiLSTM)
 
-IMDB Dataset (for sentiment learning)
+IMDB Dataset (Sentiment Learning)
 
-Text tokenization & padding
+Text padding & sequence modeling
 
 🔹 Frontend
 
@@ -71,7 +71,9 @@ Render (Free Tier)
 🧠 Model Architecture
 Text Input
    ↓
-Tokenization & Padding
+IMDB Encoded Sequences
+   ↓
+Padding
    ↓
 Embedding Layer
    ↓
@@ -83,6 +85,54 @@ Sentiment Score
    ↓
 Stress Level + Suggestions
 
+📊 Model Evaluation & Results
+🔹 Sentiment Analysis (Binary Classification)
+
+Metrics Used
+
+Accuracy
+
+Precision
+
+Recall
+
+F1-Score
+
+Confusion Matrix
+
+ROC–AUC Curve
+
+Confusion Matrix
+
+
+ROC Curve
+
+
+📁 Auto-generated evaluation report:
+evaluation/evaluation_report_sentiment.csv
+
+🔹 Stress Detection (Multiclass Classification)
+
+Metrics Used
+
+Accuracy
+
+Precision (Weighted)
+
+Recall (Weighted)
+
+F1-Score (Weighted)
+
+Confusion Matrix
+
+Confusion Matrix
+
+
+📁 Auto-generated evaluation report:
+evaluation/evaluation_report_stress.csv
+
+📌 Stress model is trained using simulated sentiment-score distributions for demonstration purposes.
+
 📂 Project Structure
 AI-Based-Mental-Health-Sentiment-Stress-Analyzer/
 │
@@ -91,8 +141,17 @@ AI-Based-Mental-Health-Sentiment-Stress-Analyzer/
 │
 ├── model/
 │   ├── sentiment_model.h5
-│   ├── stress_model.h5
-│   └── preprocess_config.pkl
+│   └── stress_model.h5
+│
+├── evaluation/
+│   ├── evaluation_sentiment.py
+│   ├── evaluation_stress.py
+│   ├── evaluation_report_sentiment.csv
+│   ├── evaluation_report_stress.csv
+│   └── plots/
+│       ├── sentiment_confusion_matrix.png
+│       ├── sentiment_roc_curve.png
+│       └── stress_confusion_matrix.png
 │
 ├── templates/
 │   └── index.html
@@ -122,7 +181,7 @@ cd AI-Based-Mental-Health-Sentiment-Stress-Analyzer
 
 2️⃣ Create Virtual Environment
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+venv\Scripts\activate   # Windows
 
 3️⃣ Install Dependencies
 pip install -r requirements.txt
@@ -140,20 +199,21 @@ http://127.0.0.1:5000
 This project is deployed on Render (Free Tier) using:
 
 pip install -r requirements.txt
-
 python app.py
 
-No paid services required.
+
+✔ No paid services required
+✔ Fully cloud hosted
 
 🎓 Academic & Interview Relevance
 
 This project demonstrates:
 
-NLP preprocessing
+NLP preprocessing & sequence modeling
 
 Deep learning with LSTM
 
-Model evaluation & selection
+Model evaluation (ROC, Confusion Matrix, F1-score)
 
 Flask backend integration
 
@@ -161,7 +221,7 @@ UI/UX design
 
 Free cloud deployment
 
-Perfect for:
+🎯 Perfect for:
 
 College final-year project
 
@@ -177,8 +237,4 @@ It should not be used as a substitute for professional mental health advice.
 👨‍💻 Author
 
 Rohit Pawar
-GitHub: https://github.com/rohit3576
-
-⭐ If you like this project
-
-Give it a ⭐ on GitHub
+🔗 GitHub: https://github.com/rohit3576
